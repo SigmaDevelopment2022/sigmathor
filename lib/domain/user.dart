@@ -27,4 +27,17 @@ class User {
     required this.balanceLimit,
     required this.balanceLast,
   });
+
+  User.fromMap(Map<dynamic, dynamic> source) {
+    code = source["code"] ?? "";
+    name = source["name"] ?? "";
+    city = source["city"] ?? "";
+    team = Team.fromMap(source["team"]);
+    goalToday = Goal(source["goalToday"]["value"] ?? "");
+    goalMonth = Goal(source["goalMonth"]["value"] ?? "");
+    soldToday = Sell(source["soldToday"]["value"] ?? "");
+    soldMonth = Sell(source["soldMonth"]["value"] ?? "");
+    balanceLimit = Balance(source["creditLimit"]["value"] ?? "");
+    balanceLast = Balance(source["creditLast"]["value"] ?? "");
+  }
 }
