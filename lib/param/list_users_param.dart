@@ -4,8 +4,8 @@ class ListUsersParams {
   late String finalDate;
 
   ListUsersParams({
-    required this.todayDate,
-    required this.initialDate,
-    required this.finalDate,
+    this.todayDate = "",
+    this.initialDate = "",
+    this.finalDate = "",
   });
 }

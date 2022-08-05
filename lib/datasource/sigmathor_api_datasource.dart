@@ -31,10 +31,13 @@ class SigmathorApiDatasource implements ISigmathorApiDatasource {
       return right(users);
     } on DioError catch (e) {
       if (e.message.contains(
-          "No route to host (OS Error: No route to host, errno = 113)"
-              .trim())) {
+              "No route to host (OS Error: No route to host, errno = 113)"
+                  .trim()) ||
+          e.message
+              .contains("OS Error: Connection refused, errno = 111".trim())) {
         return left("Erro ao se conectar com a API.");
       }
+
       rethrow;
     }
   }
